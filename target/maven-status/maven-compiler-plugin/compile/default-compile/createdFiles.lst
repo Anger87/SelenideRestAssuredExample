@@ -1,0 +1,4 @@
+tests/utils/ReadProperties.class
+tests/requestActions/ReguestAction.class
+tests/utils/HelpMethods.class
+tests/responseClasses/User.class
