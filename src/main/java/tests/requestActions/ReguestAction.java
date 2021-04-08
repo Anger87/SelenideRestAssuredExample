@@ -14,6 +14,15 @@ public class ReguestAction {
 		this.requestSpecification = requestSpecification;
 	}
 	
+	public String getProducts() {
+		return given(requestSpecification)
+				.get("/public-api/products")
+				.then()
+				.log().all()
+				.extract().body()
+				.jsonPath().getString("data");
+	}
+	
 	public List<User> getUserList() {
 		return given(requestSpecification)
 				.get("/public-api/users")
@@ -33,5 +42,25 @@ public class ReguestAction {
 				.jsonPath().getObject("data", User.class);
 	}
 	
+	public User updateUser(String userId, String testUser) {
+		return given(requestSpecification)
+				.pathParam("userId", userId)
+				.body(testUser)
+				.patch("/public-api/users/{userId}")
+				.then()
+				.log().all()
+				.extract().body()
+				.jsonPath().getObject("data", User.class);
+	}
+	
+	public String deleteUser(String userId) {
+		return given(requestSpecification)
+				.pathParam("userId", userId)
+				.delete("/public-api/users/{userId}")
+				.then()
+				.log().all()
+				.extract().body()
+				.jsonPath().getString("code");
+	}
 	
 }

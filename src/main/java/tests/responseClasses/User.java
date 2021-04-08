@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 
 public class User {
-	public int id;
+	public String id;
 	public String name;
 	public String email;
 	public String gender;
@@ -13,7 +13,7 @@ public class User {
 	public String created_at;
 	public String updated_at;
 	
-	public User(int id,String name,String email,String gender, String status,String created_at, String updated_at){
+	public User(String id, String name, String email, String gender, String status, String created_at, String updated_at){
 		this.id=id;
 		this.name=name;
 		this.email=email;
@@ -27,7 +27,7 @@ public class User {
 		super();
 	}
 	
-	public User id(int id) {
+	public User id(String id) {
 		this.id = id;
 		return this;
 	}
