@@ -2,7 +2,7 @@
 <suite name="Test Search" parallel="false" verbose="5">
     <test name="Search" preserve-order="true">
         <classes>
-            <class name="de.gorest.Goretest"/>
+            <class name="de.allstars.MetaWeatherTest"/>
         </classes>
     </test>
 </suite>

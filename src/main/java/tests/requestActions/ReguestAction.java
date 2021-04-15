@@ -1,6 +1,10 @@
 package tests.requestActions;
 
+import io.restassured.builder.RequestSpecBuilder;
+import io.restassured.filter.log.LogDetail;
+import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
+import tests.responseClasses.Location;
 import tests.responseClasses.User;
 
 import java.util.List;
@@ -10,57 +14,41 @@ import static io.restassured.RestAssured.given;
 public class ReguestAction {
 	private RequestSpecification requestSpecification;
 	
-	public ReguestAction(RequestSpecification requestSpecification) {
-		this.requestSpecification = requestSpecification;
+	public ReguestAction(String URL) {
+		this.requestSpecification = new RequestSpecBuilder()
+				.setBaseUri(URL)
+				.setContentType(ContentType.JSON)
+				.log(LogDetail.ALL)
+				.build();
 	}
 	
-	public String getProducts() {
+	public String locationSearchByName(String name) {
 		return given(requestSpecification)
-				.get("/public-api/products")
+				.pathParam("name", name)
+				.get("/api/location/search/?query={name}")
 				.then()
 				.log().all()
 				.extract().body()
-				.jsonPath().getString("data");
+				.jsonPath().getString("");
 	}
 	
-	public List<User> getUserList() {
+	public List<Location> locationSearchByLatlong(String latlong) {
 		return given(requestSpecification)
-				.get("/public-api/users")
+				.pathParam("latlong", latlong)
+				.get("/api/location/search/?lattlong={latlong}")
 				.then()
 				.log().all()
 				.extract().body()
-				.jsonPath().getList("data", User.class);
+				.jsonPath().getList("", Location.class);
 	}
 	
-	public User createUser(String testUser) {
+	public String locationSearchByWoeid(String woeid) {
 		return given(requestSpecification)
-				.body(testUser)
-				.post("/public-api/users")
+				.pathParam("woeid", woeid)
+				.get("/api/location/{woeid}/")
 				.then()
 				.log().all()
 				.extract().body()
-				.jsonPath().getObject("data", User.class);
+				.jsonPath().getString("");
 	}
-	
-	public User updateUser(String userId, String testUser) {
-		return given(requestSpecification)
-				.pathParam("userId", userId)
-				.body(testUser)
-				.patch("/public-api/users/{userId}")
-				.then()
-				.log().all()
-				.extract().body()
-				.jsonPath().getObject("data", User.class);
-	}
-	
-	public String deleteUser(String userId) {
-		return given(requestSpecification)
-				.pathParam("userId", userId)
-				.delete("/public-api/users/{userId}")
-				.then()
-				.log().all()
-				.extract().body()
-				.jsonPath().getString("code");
-	}
-	
 }

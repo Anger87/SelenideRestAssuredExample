@@ -58,6 +58,12 @@
             <artifactId>poi-ooxml</artifactId>
             <version>3.16</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/com.salesforceiq.augmenteddriver/AugmentedDriver -->
+        <dependency>
+            <groupId>com.salesforceiq.augmenteddriver</groupId>
+            <artifactId>AugmentedDriver</artifactId>
+            <version>1.10.1</version>
+        </dependency>
 
     </dependencies>
 
