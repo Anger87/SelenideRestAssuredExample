@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Test Search" parallel="false" verbose="5">
+    <test name="MetaWeatherTest" >
+        <classes>
+            <class name="com.allstars.MetaWeatherTest"/>
+        </classes>
+    </test>
+</suite>

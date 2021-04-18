@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="INFO">
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %M: %m%n"/>
+        </Console>
+
+        <Routing name="RoutingAppender">
+            <Routes pattern="$${ctx:threadName}">
+                <Route>
+                    <RollingFile name="File" fileName="target/device-logs/${ctx:threadName}.log"
+                                 filePattern="${ctx:threadName}/$${date:yyyy-MM-dd}/application-%d{yyyy-MM-dd}-%i.log" append="false">
+                        <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1} - %M: %m%n"/>
+                        <Policies>
+                            <SizeBasedTriggeringPolicy size="10 MB"/>
+                        </Policies>
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+    </appenders>
+
+    <loggers>
+        <root level="info">
+            <appender-ref ref="Console" level="info"/>
+            <appender-ref ref="RoutingAppender" level="INFO"/>
+        </root>
+    </loggers>
+</configuration>

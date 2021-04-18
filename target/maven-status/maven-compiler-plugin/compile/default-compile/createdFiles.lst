@@ -1,4 +1,7 @@
-tests/utils/ReadProperties.class
-tests/requestActions/ReguestAction.class
+tests/ui/pageobjects/StartPage.class
+tests/api/requestActions/ReguestAction.class
+tests/ui/pageobjects/iFramePage.class
 tests/utils/HelpMethods.class
-tests/responseClasses/User.class
+tests/utils/ReadProperties.class
+tests/ui/pageobjects/CheckboxPage.class
+tests/api/requestActions/responseClasses/Location.class

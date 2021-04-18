@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="gorestExample" />
+        <module name="SelenideRestAssuredExample" />
         <module name="restapitests" />
+        <module name="AllStarsExample" />
+        <module name="gorestExample" />
+        <module name="AllStarsExample copy" />
       </profile>
     </annotationProcessing>
   </component>
